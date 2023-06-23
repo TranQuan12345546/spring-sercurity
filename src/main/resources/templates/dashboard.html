@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+</head>
+<body>
+<h1>Dashboard Page</h1>
+<ul>
+    <li>
+        <a th:href="@{/}">Home page</a>
+    </li>
+    <li sec:authorize="hasAnyRole('ADMIN')">
+        <a th:href="@{/dashboard}">Dashboard Page</a>
+    </li>
+    <li sec:authorize="hasAnyRole('ADMIN', 'AUTHOR', 'SALE')">
+        <a th:href="@{/blog}">Blog Page</a>
+    </li>
+    <li sec:authorize="hasAnyRole('ADMIN', 'SALE')">
+        <a th:href="@{/product}">Product Page</a>
+    </li>
+    <li sec:authorize="hasAnyRole('ADMIN')">
+        <a th:href="@{/user}">User Page</a>
+    </li>
+    <li sec:authorize="hasAnyRole('USER')">
+        <a th:href="@{/user-info}">User Info Page</a>
+    </li>
+</ul>
+
+</body>
+</html>
